@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Personal Assistant Widget</title>
+    <style>
+        /* Basic styling for the widget */
+        #assistant-widget {
+            width: 300px;
+            padding: 20px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            font-family: Arial, sans-serif;
+        }
+        #assistant-widget input, #assistant-widget button {
+            width: 100%;
+            padding: 10px;
+            margin: 5px 0;
+        }
+    </style>
+</head>
+<body>
+    <div id="assistant-widget">
+        <h3>Personal Assistant</h3>
+        <input type="text" id="task-input" placeholder="Enter your task">
+        <button onclick="sendTask()">Send Task</button>
+        <div id="response"></div>
+    </div>
+
+    <script>
+        async function sendTask() {
+            const taskInput = document.getElementById('task-input').value;
+            const responseDiv = document.getElementById('response');
+
+            try {
+                const response = await fetch('/api/send-task', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify({ task: taskInput })
+                });
+
+                const data = await response.json();
+                responseDiv.innerHTML = `<p>${data.message}</p>`;
+            } catch (error) {
+                responseDiv.innerHTML = `<p>Error: ${error.message}</p>`;
+            }
+        }
+    </script>
+</body>
+</html>
