@@ -17,7 +17,7 @@ A simple Express-based server application for handling task submissions via a RE
 
 1. Clone the repository:
     ```bash
-    git clone https://github.com/your-username/chat-widget.git
+    git clone [https://github.com/octagonron/Chat-Ui.git]
     ```
 
 2. Navigate to the project directory:
