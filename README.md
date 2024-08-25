@@ -36,7 +36,7 @@ A simple Express-based server application for handling task submissions via a RE
     - Create a `.env` file in the root directory.
     - Add your API key and any other configuration details:
         ```env
-        PORT=3000
+        PORT=3000n
         API_KEY=your_api_key_here
         ```
 
